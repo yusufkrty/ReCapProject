@@ -13,19 +13,24 @@ namespace ConsoleUI
             //GetAllCarsTest(); +
             //GetByIdTest(); +
             //AddCarTest(); +
-            //AddBrandTest(); +
+            //AddBrandTest(); 
             //GetBrandTest(); +
             //AddColorTest(); +
+            //DTOTest(); +
 
 
+
+
+
+        }
+
+        private static void DTOTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(car.CarName + "/" + car.ColorName);
+                Console.WriteLine(car.CarName +"/"+car.BrandName+ "/" + car.ColorName+"/"+car.DailyPrice);
             }
-
-
-
         }
 
         private static void AddColorTest()
@@ -52,8 +57,8 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             Brand brand = new Brand();
 
-            brand.BrandName = "Rolls-Royce";
-            brand.BrandId = 2;
+            brand.BrandName = "Ford";
+            brand.BrandId = 3;
             brandManager.Add(brand);
         }
 
