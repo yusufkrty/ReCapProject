@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFrameWork
         {
             optionsBuilder.UseSqlServer(@"Server=(LocalDB)\MSSQLLocalDB;Database=C:\USERS\YUSUF KARATAY\SOURCE\REPOS\RECAPPROJECT\DATAACCESS\ABSTRACT\RENTACARDATABASE.MDF;Integrated Security=True;");
         }
-        public DbSet<Car> Car { get; set; }
+        public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Brand> Brands { get; set; }
     }

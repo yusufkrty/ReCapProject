@@ -15,9 +15,26 @@ namespace ConsoleUI
             //AddCarTest(); +
             //AddBrandTest(); +
             //GetBrandTest(); +
+            //AddColorTest(); +
+
+
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + "/" + car.ColorName);
+            }
 
 
 
+        }
+
+        private static void AddColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            Color color = new Color();
+            color.ColorId = 2;
+            color.ColorName = "White";
+            colorManager.Add(color);
         }
 
         private static void GetBrandTest()
@@ -26,7 +43,7 @@ namespace ConsoleUI
 
             foreach (var brand in brandManager.GetAll())
             {
-                Console.WriteLine(brand.BrandName);
+                Console.WriteLine(brand.BrandId + " " + brand.BrandName);
             }
         }
 
@@ -44,13 +61,14 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
             Car car12 = new Car();
-            car12.BrandId = 1;
-            car12.CarId = 7;
-            car12.ColorId = 5;
-            car12.ModelYear = 2021;
+            car12.BrandId = 2;
+            car12.CarName = "Audi A5";
+            car12.CarId = 4;
+            car12.ColorId = 2;
+            car12.ModelYear = 2019;
             car12.DailyPrice = 800000;
-            car12.Description = "Mercedes";
-            carManager.Delete(car12);
+            car12.Description = "Oto";
+            carManager.Add(car12);
         }
 
         private static void GetAllCarsTest()
