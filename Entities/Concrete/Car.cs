@@ -16,4 +16,3 @@ namespace Entities.Concrete
 
     }
 }
-// Id, BrandId, ColorId, ModelYear, DailyPrice, Description

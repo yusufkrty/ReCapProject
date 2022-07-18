@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    class BrandManager : IBrandService
+    public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
 
@@ -15,19 +15,33 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
+
         public void Add(Brand brand)
         {
             _brandDal.Add(brand);
+            
         }
 
         public void Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            
+        }
+
+        public List<Brand> GetAll()
+        {
+            return _brandDal.GetAll();
+        }
+
+        public Brand GetBrandByBrandId(int id)
+        {
+            return _brandDal.Get(b => b.BrandId == id);
         }
 
         public void Update(Brand brand)
         {
             _brandDal.Update(brand);
+            Console.WriteLine("Marka Güncellendi");
         }
     }
 }

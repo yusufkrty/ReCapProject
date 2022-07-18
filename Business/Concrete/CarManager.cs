@@ -3,6 +3,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -23,22 +24,36 @@ namespace Business.Concrete
             {
                 _carDal.Add(car);
             }
+            else
+            {
+                Console.WriteLine("Geçerli bir değer giriniz.");
+            }
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
         }
 
         public List<Car> GetAll()
         {
-            //iş kodlar
+            
             return _carDal.GetAll();
         }
 
         public List<Car> GetCarsByBrandId(int id)
         {
-            return _carDal.GetAll(p => p.BrandId == id);
+            return _carDal.GetAll(p => p.BrandId == id).ToList();
         }
 
         public List<Car> GetCarsByColorId(int id)
         {
-            return _carDal.GetAll(p => p.ColorId == id);
+            return _carDal.GetAll(p => p.ColorId == id).ToList();
+        }
+
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
         }
     }
 }

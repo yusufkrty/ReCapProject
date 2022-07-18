@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    class ColorManager : IColorService
+    public class ColorManager : IColorService
     {
         IColorDal _colorDal;
 
@@ -15,14 +15,28 @@ namespace Business.Concrete
         {
             _colorDal = colorDal;
         }
+
         public void Add(Color color)
         {
-            _colorDal.Add(color);
+           
+          _colorDal.Add(color);
+          
+            
         }
 
         public void Delete(Color color)
         {
             _colorDal.Delete(color);
+        }
+
+        public List<Color> GetAll()
+        {
+            return _colorDal.GetAll();
+        }
+
+        public Color GetById(int ColorId)
+        {
+            return _colorDal.Get(c => c.ColorId == ColorId);
         }
 
         public void Update(Color color)
