@@ -10,13 +10,15 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //GetAllCarsTest(); +
-            //GetByIdTest(); +
-            //AddCarTest(); +
-            //AddBrandTest(); 
-            //GetBrandTest(); +
-            //AddColorTest(); +
-            //DTOTest(); +
+            //GetAllCarsTest(); Tested ✓
+            //GetByBrandIdTest(); Tested ✓
+            //AddCarTest(); Tested ✓
+            //AddBrandTest(); Tested ✓
+            //GetBrandTest(); Tested ✓
+            //AddColorTest(); Tested ✓
+            //DTOTest(); Tested ✓
+
+
 
 
 
@@ -27,9 +29,9 @@ namespace ConsoleUI
         private static void DTOTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
-                Console.WriteLine(car.CarName +"/"+car.BrandName+ "/" + car.ColorName+"/"+car.DailyPrice);
+                Console.WriteLine(car.CarName + "/" + car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
             }
         }
 
@@ -46,7 +48,7 @@ namespace ConsoleUI
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.BrandId + " " + brand.BrandName);
             }
@@ -71,7 +73,7 @@ namespace ConsoleUI
             car12.CarId = 4;
             car12.ColorId = 2;
             car12.ModelYear = 2019;
-            car12.DailyPrice = 800000;
+            car12.DailyPrice = 0;
             car12.Description = "Oto";
             carManager.Add(car12);
         }
@@ -79,19 +81,19 @@ namespace ConsoleUI
         private static void GetAllCarsTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.Description);
             }
         }
 
-        private static void GetByIdTest()
+        private static void GetByBrandIdTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarsByBrandId(4))
+            foreach (var car in carManager.GetCarsByBrandId(2).Data)
             {
-                Console.WriteLine(car.Description);
+                Console.WriteLine(car.CarName);
             }
         }
     }
